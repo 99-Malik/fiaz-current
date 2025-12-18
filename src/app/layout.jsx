@@ -21,17 +21,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
         <head>
-        {/* Include gtag.js script */}
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-16717259338" />
+        {/* Google tag (gtag.js) */}
+        <Script 
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=GT-KFTQ5FS" 
+        />
 
-        {/* Include gtag.js initialization script */}
-        <Script dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config','AW-16717259338');
-        ` }} />
+        {/* Google tag initialization */}
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'GT-KFTQ5FS');
+            `,
+          }}
+        />
 
 {/*         <Script dangerouslySetInnerHTML={{
           __html: `
