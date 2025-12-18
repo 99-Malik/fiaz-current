@@ -26,7 +26,7 @@ module.exports = {
         boschSecondary: "#2D3033",
         boschBlob: "#F0F1F2",
 
-        samsungPrimary: "#000000",
+        samsungPrimary: "#1428A0",
         samsungSecondary: "#FFFFFF",
         samsungBlob: "#F7F7F7",
 

@@ -44,7 +44,7 @@ export function SliderBanner({ company = "Repair Home UAE" }) {
               <span className={cn(
                 company === "Siemens" ? "text-siemensPrimary" :
                   company === "Bosch" ? "text-boschPrimary" :
-                    company === "Samsung" ? "text-samsungPrimary" :
+                    company === "Samsung" ? "text-blue-500" :
                       company === "Lg" ? "text-lgPrimary" :
                         "text-primary"
               )}>

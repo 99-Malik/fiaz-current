@@ -56,7 +56,7 @@ export default function SamsungHeader() {
                 width={120}
                 height={60}
                 alt="Samsung"
-                className="h-12 lg:h-16 w-auto"
+                className="h-8 lg:h-12 w-auto"
               />
             </Link>
           </motion.div>
