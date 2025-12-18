@@ -7,9 +7,9 @@ import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
 import { Wrench, Clock, Shield, Award } from "lucide-react";
 
-export function SliderBanner({ company = "Appliance Services UAE" }) {
+export function SliderBanner({ company = "Repair Home UAE" }) {
   const images = ["/washing-new.png", "/fridge-new.png", "/sid-new.png", "/oven-new.png"];
-  const isGeneric = company === "Appliance Services UAE";
+  const isGeneric = company === "Repair Home UAE";
 
   const features = [
     { icon: Clock, text: "Same-Day Service" },

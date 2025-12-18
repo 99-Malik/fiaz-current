@@ -53,7 +53,7 @@ export default function Header() {
           >
             <Link href="/" className="flex items-center">
               <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Appliance Services UAE
+                Repair Home UAE
               </span>
             </Link>
           </motion.div>

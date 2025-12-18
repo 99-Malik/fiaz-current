@@ -3,7 +3,7 @@ import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
 
 export default function ServicesDetails({
-  company = "Appliance Services UAE",
+  company = "Repair Home UAE",
 }) {
   return (
     <div className="w-full flex flex-col gap-10 items-center justify-center py-20">

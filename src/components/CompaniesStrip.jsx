@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { WashingMachine, Refrigerator, ChefHat, Tv, Droplets, Flame } from "lucide-react";
 
-export default function CompaniesStrip({ company = "Appliance Services UAE" }) {
+export default function CompaniesStrip({ company = "Repair Home UAE" }) {
   const appliances = [
     { icon: WashingMachine, label: "Washing Machines" },
     { icon: Refrigerator, label: "Refrigerators" },

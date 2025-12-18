@@ -7,7 +7,7 @@ import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { phoneNumber } from "@/lib/phone";
 import { motion } from "framer-motion";
 
-export default function Footer({ company = "Appliance Services UAE" }) {
+export default function Footer({ company = "Repair Home UAE" }) {
   const primaryColor = company === "Siemens" ? "siemensPrimary" :
     company === "Bosch" ? "boschPrimary" :
       company === "Lg" ? "lgPrimary" :
@@ -29,7 +29,7 @@ export default function Footer({ company = "Appliance Services UAE" }) {
             className="lg:col-span-1"
           >
             {/* Brand Logo */}
-            {company !== "Appliance Services UAE" ? (
+            {company !== "Repair Home UAE" ? (
               <div className="mb-4">
                 <Image
                   src={
@@ -47,7 +47,7 @@ export default function Footer({ company = "Appliance Services UAE" }) {
               </div>
             ) : (
               <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                Appliance Services UAE
+                Repair Home UAE
               </h3>
             )}
 
@@ -175,7 +175,7 @@ export default function Footer({ company = "Appliance Services UAE" }) {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-8 mt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Appliance Services UAE. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Repair Home UAE. All rights reserved.</p>
             <div className="flex gap-6">
               <Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/" className="hover:text-white transition-colors">Terms of Service</Link>

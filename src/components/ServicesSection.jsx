@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { phoneNumber } from "@/lib/phone";
 import { X, ArrowRight, Clock, Shield, Wrench } from "lucide-react";
 
-export function ServicesSection({ company = "Appliance Services UAE" }) {
+export function ServicesSection({ company = "Repair Home UAE" }) {
   const cards = [
     {
       description: "Washing Machine Repair",

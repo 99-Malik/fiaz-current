@@ -5,7 +5,7 @@ import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
 import { Phone, MessageCircle, CheckCircle2 } from "lucide-react";
 
-export default function OneCallSection({ company = "Appliance Services UAE" }) {
+export default function OneCallSection({ company = "Repair Home UAE" }) {
   const benefits = [
     "Expert Diagnosis",
     "Same-Day Service",

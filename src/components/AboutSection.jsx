@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { CheckCircle2, Users, TrendingUp, Heart } from "lucide-react";
 
-export default function AboutSection({ company = "Appliance Services UAE" }) {
+export default function AboutSection({ company = "Repair Home UAE" }) {
   const stats = [
     { icon: Users, value: "10K+", label: "Happy Customers" },
     { icon: CheckCircle2, value: "15+", label: "Years Experience" },

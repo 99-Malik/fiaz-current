@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { DollarSign, Award, Heart, Clock, Shield, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export default function OurFeatures({ company = "Appliance Services UAE" }) {
+export default function OurFeatures({ company = "Repair Home UAE" }) {
   const features = [
     {
       icon: DollarSign,
