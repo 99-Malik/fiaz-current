@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ReviewSection({
   direction = "left",
@@ -17,33 +19,51 @@ export default function ReviewSection({
     {
       name: "Dawood Ayoob",
       quote:
-        "The best company I have ever worked with. Their team is very professional and always ready to help. I will definitely recommend them to my friends and family.",
-      title: "Washers Laundry",
+        "Outstanding service! The technician arrived on time, diagnosed the issue quickly, and fixed my washing machine perfectly. Professional, courteous, and reasonably priced. Highly recommend their services!",
+      title: "Washing Machine Repair",
+      rating: 5,
+      location: "Dubai",
     },
     {
       name: "Ayesha Ali",
       quote:
-        "I am very happy with the services provided by this company. They are very professional and always ready to help. I will definitely recommend them to my friends and family.",
-      title: "Friends Home Company",
+        "Excellent experience from start to finish. They repaired my refrigerator efficiently and explained everything clearly. The warranty gives me peace of mind. Will definitely use them again!",
+      title: "Refrigerator Repair",
+      rating: 5,
+      location: "Abu Dhabi",
     },
     {
       name: "Ali Raza",
       quote:
-        "To be honest, I was a bit skeptical at first but after working with them, I can say that they are the best in the business. I will definitely recommend them to my friends and family.",
-      title: "Japan Electronics",
+        "I was skeptical at first, but they exceeded my expectations. Same-day service, fair pricing, and my dishwasher works like new. The team is knowledgeable and trustworthy. Five stars!",
+      title: "Dishwasher Repair",
+      rating: 5,
+      location: "Sharjah",
     },
     {
       name: "Sara Khan",
       quote:
-        "I am very happy with the services provided by this company. They are very professional and always ready to help. I will definitely recommend them to my friends and family.",
-      title: "TelePro Company",
+        "Fast, reliable, and professional. They fixed my oven heating issue in no time. The technician was clean, respectful, and did excellent work. Best appliance repair service in UAE!",
+      title: "Oven Repair",
+      rating: 5,
+      location: "Dubai",
+    },
+    {
+      name: "Mohammed Hassan",
+      quote:
+        "Top-notch service! They handled my dryer repair with expertise. The customer service was excellent, and the repair was done quickly. Very satisfied with the quality and price.",
+      title: "Dryer Repair",
+      rating: 5,
+      location: "Ajman",
     },
   ];
 
   useEffect(() => {
     addAnimation();
   }, []);
+  
   const [start, setStart] = useState(false);
+  
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -60,86 +80,105 @@ export default function ReviewSection({
       setStart(true);
     }
   }
+  
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
+        containerRef.current.style.setProperty("--animation-direction", "forwards");
       } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
+        containerRef.current.style.setProperty("--animation-direction", "reverse");
       }
     }
   };
+  
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
+        containerRef.current.style.setProperty("--animation-duration", "30s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+        containerRef.current.style.setProperty("--animation-duration", "50s");
       } else {
         containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
   };
+  
   return (
-    <div
-      ref={containerRef}
-      className={cn(
-        "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]",
-        className
-      )}
-    >
-      <ul
-        ref={scrollerRef}
+    <div className="relative w-full py-12 sm:py-16">
+      <div
+        ref={containerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-          start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          "scroller relative z-20 max-w-7xl mx-auto overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]",
+          className
         )}
       >
-        {items.map((item, idx) => (
-          <li
-            className={cn(
-              "w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 px-8 py-6 md:w-[450px]",
-              company === "Lg"
-                ? "border-lgSecondary text-white bg-lgSecondary"
-                : company === "Samsung"
-                ? "border-samsungPrimary shadow-md"
-                : company === "Bosch"
-                ? "border-black/10 shadow text-black bg-white"
-                : company === "Siemens"
-                ? "border-siemensPrimary shadow-md"
-                : "border-secondary"
-            )}
-            key={item.name}
-          >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className=" relative z-20 text-sm leading-[1.6] font-normal">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className=" text-sm leading-[1.6] font-bold">
+        <ul
+          ref={scrollerRef}
+          className={cn(
+            "flex min-w-full shrink-0 gap-6 py-4 w-max flex-nowrap",
+            start && "animate-scroll",
+            pauseOnHover && "hover:[animation-play-state:paused]"
+          )}
+        >
+          {items.map((item, idx) => (
+            <li
+              key={`${item.name}-${idx}`}
+              className={cn(
+                "w-[340px] sm:w-[380px] max-w-full flex-shrink-0",
+                "relative rounded-2xl p-6 sm:p-8",
+                "backdrop-blur-sm border-2",
+                company === "Lg"
+                  ? "bg-white/90 border-lgPrimary/30 shadow-lg"
+                  : company === "Samsung"
+                  ? "bg-white/90 border-samsungPrimary/30 shadow-lg"
+                  : company === "Bosch"
+                  ? "bg-white/90 border-boschPrimary/30 shadow-lg"
+                  : company === "Siemens"
+                  ? "bg-white/90 border-siemensPrimary/30 shadow-lg"
+                  : "bg-white/90 border-primary/30 shadow-lg"
+              )}
+            >
+              <div className="flex flex-col h-full">
+                {/* Quote Icon */}
+                <div className={cn(
+                  "mb-4",
+                  company === "Lg" ? "text-lgPrimary" :
+                  company === "Samsung" ? "text-samsungPrimary" :
+                  company === "Bosch" ? "text-boschPrimary" :
+                  company === "Siemens" ? "text-siemensPrimary" :
+                  "text-primary"
+                )}>
+                  <Quote className="w-8 h-8 opacity-60" />
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+
+                {/* Quote Text */}
+                <blockquote className="flex-1 mb-6">
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                    {item.quote}
+                  </p>
+                </blockquote>
+
+                {/* Author Info */}
+                <div className="border-t pt-4">
+                  <div className="font-bold text-gray-900 text-sm sm:text-base">
                     {item.name}
-                  </span>
-                  <span className=" text-sm leading-[1.6] font-bold">
-                    {item.title}
-                  </span>
-                </span>
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-600 mt-1">
+                    {item.title} • {item.location}
+                  </div>
+                </div>
               </div>
-            </blockquote>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

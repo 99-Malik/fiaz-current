@@ -1,11 +1,10 @@
 "use client";
 
 import { leftToRightVariants } from "@/lib/variants";
-import PrimaryButton from "./PrimaryButton";
-import SecondaryButton from "./SecondaryButton";
 import { motion } from "framer-motion";
-import TertiaryButton from "./TertiaryButton";
 import { phoneNumber } from "@/lib/phone";
+import { Phone, MessageCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function CallAndWhatsappButton({
   banner = false,
@@ -17,35 +16,53 @@ export default function CallAndWhatsappButton({
       whileInView="show"
       exit="show"
       variants={leftToRightVariants}
-      className="flex items-center gap-3"
+      className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center"
     >
-      <PrimaryButton
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => {
           window.location.href = `tel:${phoneNumber}`;
         }}
-        company={company}
+        className={cn(
+          "flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-white transition-all duration-200 shadow-lg hover:shadow-xl",
+          company === "Siemens"
+            ? "bg-siemensPrimary hover:bg-siemensPrimary/90"
+            : company === "Bosch"
+            ? "bg-boschPrimary hover:bg-boschPrimary/90"
+            : company === "Lg"
+            ? "bg-lgPrimary hover:bg-lgPrimary/90"
+            : company === "Samsung"
+            ? "bg-samsungPrimary hover:bg-samsungPrimary/90"
+            : "bg-primary hover:bg-primary/90"
+        )}
       >
-        Call Us
-      </PrimaryButton>
-      {banner ? (
-        <TertiaryButton
-          onClick={() => {
-            window.location.href = `https://wa.me/${phoneNumber}`;
-          }}
-          company={company}
-        >
-          Whatsapp Us
-        </TertiaryButton>
-      ) : (
-        <SecondaryButton
-          onClick={() => {
-            window.location.href = `https://wa.me/${phoneNumber}`;
-          }}
-          company={company}
-        >
-          Whatsapp Us
-        </SecondaryButton>
-      )}
+        <Phone className="w-5 h-5" />
+        <span>Call Us</span>
+      </motion.button>
+      
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          window.location.href = `https://wa.me/${phoneNumber}`;
+        }}
+        className={cn(
+          "flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-white transition-all duration-200 shadow-lg hover:shadow-xl",
+          company === "Siemens"
+            ? "bg-siemensPrimary hover:bg-siemensPrimary/90"
+            : company === "Bosch"
+            ? "bg-boschPrimary hover:bg-boschPrimary/90"
+            : company === "Lg"
+            ? "bg-lgPrimary hover:bg-lgPrimary/90"
+            : company === "Samsung"
+            ? "bg-samsungPrimary hover:bg-samsungPrimary/90"
+            : "bg-green-600 hover:bg-green-700"
+        )}
+      >
+        <MessageCircle className="w-5 h-5" />
+        <span>WhatsApp Us</span>
+      </motion.button>
     </motion.div>
   );
 }

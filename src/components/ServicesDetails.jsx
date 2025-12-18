@@ -9,32 +9,44 @@ export default function ServicesDetails({
     <div className="w-full flex flex-col gap-10 items-center justify-center py-20">
       <div
         className={cn(
-          "flex flex-col gap-5 bg-black/10 rounded-xl p-3 max-w-7xl px-5 justify-cente items-center",
-          company === "Appliance Services UAE" && "bg-primary/20",
-          company === "Bosch" && "bg-boschPrimary/20",
-          company === "Siemens" && "bg-siemensPrimary/20",
-          company === "Samsung" && "bg-samsungPrimary/20",
-          company === "LG" && "bg-lgPrimary/20"
+          "flex flex-col gap-6 text-center max-w-4xl px-4 mx-4 sm:mx-0",
+          "bg-white rounded-3xl p-8 sm:p-12 shadow-sm border",
+          company === "Siemens" ? "border-siemensPrimary/20" :
+            company === "Bosch" ? "border-boschPrimary/20" :
+              company === "Samsung" ? "border-samsungPrimary/20" :
+                company === "Lg" ? "border-lgPrimary/20" :
+                  "border-primary/20"
         )}
       >
-        <h1 className="text-3xl font-bold">
-          {company}{" "}
-          <span className="py-1 px-2 bg-black rounded text-white">
-            Home Appliances Repairs
-          </span>{" "}
-          Service Center
+        <span className={cn(
+          "mx-auto px-4 py-1.5 rounded-full text-sm font-semibold w-fit",
+          company === "Siemens" ? "bg-siemensPrimary/10 text-siemensPrimary" :
+            company === "Bosch" ? "bg-boschPrimary/10 text-boschPrimary" :
+              company === "Samsung" ? "bg-samsungPrimary/10 text-samsungPrimary" :
+                company === "Lg" ? "bg-lgPrimary/10 text-lgPrimary" :
+                  "bg-primary/10 text-primary"
+        )}>
+          Home Appliances Repairs
+        </span>
+
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight">
+          <span className={cn(
+            company === "Siemens" ? "text-siemensPrimary" :
+              company === "Bosch" ? "text-boschPrimary" :
+                company === "Samsung" ? "text-samsungPrimary" :
+                  company === "Lg" ? "text-lgPrimary" :
+                    "text-primary"
+          )}>
+            {company}
+          </span> Service Center
         </h1>
-        <span className="text-black/75 text-center">
+
+        <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
           At {company} Service Center, we specialize in repairing a wide range
           of {company} home appliances. Our certified technicians are experts in
           diagnosing and fixing issues with your {company} washing machine,
-          fridge, dishwasher, dryer, and cooking range. We use only genuine{" "}
-          {company} parts and follow manufacturer-approved repair procedures to
-          ensure that your appliances are restored to their optimal performance.
-          Whether it’s a minor issue or a major repair, you can trust our team
-          to deliver top-quality service that keeps your appliances running
-          smoothly.
-        </span>
+          fridge, dishwasher, dryer, and cooking range.
+        </p>
       </div>
       <div className="max-w-7xl px-5 w-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         <Service
@@ -65,7 +77,7 @@ export default function ServicesDetails({
             "Slow wash cycles",
             "Control panel issues",
           ]}
-          imgUrl={"/washing.jpeg"}
+          imgUrl={"/washing-new.png"}
         />
         <Service
           company={company}
@@ -93,7 +105,7 @@ export default function ServicesDetails({
             "Refrigerant leaks",
             "High energy consumption",
           ]}
-          imgUrl={"/fridge.jpeg"}
+          imgUrl={"/fridge-new.png"}
         />
         <Service
           company={company}
@@ -121,7 +133,7 @@ export default function ServicesDetails({
             "Detergent residue on dishes",
             "Dishwasher not drying dishes",
           ]}
-          imgUrl={"/dishwasher.jpeg"}
+          imgUrl={"/dishwasher-new.png"}
         />
         <Service
           company={company}
@@ -150,7 +162,7 @@ export default function ServicesDetails({
             "Oven not self-cleaning",
             "Oven not turning off",
           ]}
-          imgUrl={"/oven.jpeg"}
+          imgUrl={"/oven-new.png"}
         />
         {/* Stove/Cooker if company is Bosch and Siemens else TV repair */}
 
@@ -180,7 +192,7 @@ export default function ServicesDetails({
               "Oven not self-cleaning",
               "Oven not turning off",
             ]}
-            imgUrl={"/stove.jpeg"}
+            imgUrl={"/oven-new.png"}
           />
         ) : (
           <Service
@@ -210,7 +222,7 @@ export default function ServicesDetails({
               "TV displaying static",
               "TV displaying vertical lines",
             ]}
-            imgUrl={"/tv.jpeg"}
+            imgUrl={"/tv-new.png"}
           />
         )}
         {/* Dryer repair */}
@@ -241,7 +253,7 @@ export default function ServicesDetails({
             "Dryer not heating well",
             "Dryer not heating properly",
           ]}
-          imgUrl={"/dryer.jpeg"}
+          imgUrl={"/dryer-new.png"}
         />
       </div>
     </div>
@@ -250,23 +262,42 @@ export default function ServicesDetails({
 
 const Service = ({ title, desc, points, imgUrl, company }) => {
   return (
-    <div className="flex flex-col items-center w-full border rounded-lg overflow-hidden border-black/10 gap-2">
+    <div className={cn(
+      "flex flex-col items-center w-full rounded-2xl overflow-hidden bg-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1",
+      company === "Siemens" ? "border-2 border-siemensPrimary/10 hover:border-siemensPrimary/30" :
+        company === "Bosch" ? "border-2 border-boschPrimary/10 hover:border-boschPrimary/30" :
+          company === "Samsung" ? "border-2 border-samsungPrimary/10 hover:border-samsungPrimary/30" :
+            company === "Lg" ? "border-2 border-lgPrimary/10 hover:border-lgPrimary/30" :
+              "border-2 border-primary/10 hover:border-primary/30"
+    )}>
       <div
-        className="w-full h-[30rem]"
+        className="w-full h-64 sm:h-72"
         style={{
           backgroundImage: `url(${imgUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-      ></div>
-      <div className="px-3 pt-1 pb-3 flex flex-col gap-10 justify-between h-full">
-        <div className="flex flex-col gap-5">
-          <h1 className="text-2xl font-black">{title}</h1>
-          <p className="text-">{desc}</p>
-          <ul className="list-disc list-inside text-sm">
-            {points.map((point, index) => (
-              <li key={index}>{point}</li>
+      >
+        <div className="w-full h-full bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
+      <div className="p-6 flex flex-col gap-6 justify-between h-full w-full">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-2xl font-black text-gray-900 leading-tight">{title}</h1>
+          <p className="text-gray-600 leading-relaxed text-sm">{desc}</p>
+          <ul className="grid gap-2 text-sm text-gray-700">
+            {points.slice(0, 8).map((point, index) => (
+              <li key={index} className="flex items-start gap-2">
+                <span className={cn(
+                  "mt-1.5 w-1.5 h-1.5 rounded-full shrink-0",
+                  company === "Siemens" ? "bg-siemensPrimary" :
+                    company === "Bosch" ? "bg-boschPrimary" :
+                      company === "Samsung" ? "bg-samsungPrimary" :
+                        company === "Lg" ? "bg-lgPrimary" :
+                          "bg-primary"
+                )} />
+                {point}
+              </li>
             ))}
           </ul>
         </div>

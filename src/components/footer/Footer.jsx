@@ -2,114 +2,185 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
+import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { phoneNumber } from "@/lib/phone";
+import { motion } from "framer-motion";
 
 export default function Footer({ company = "Appliance Services UAE" }) {
+  const primaryColor = company === "Siemens" ? "siemensPrimary" :
+    company === "Bosch" ? "boschPrimary" :
+      company === "Lg" ? "lgPrimary" :
+        company === "Samsung" ? "samsungPrimary" :
+          "secondary";
+
   return (
-    <footer className="w-full relative flex flex-col">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill={
-            company === "Siemens"
-              ? "#019997"
-              : company === "Bosch"
-              ? "#F80000"
-              : company === "Lg"
-              ? "#A50034"
-              : company === "Samsung"
-              ? "#000000"
-              : "#17497C"
-          }
-          fillOpacity="1"
-          d="M0,256L26.7,266.7C53.3,277,107,299,160,288C213.3,277,267,235,320,229.3C373.3,224,427,256,480,240C533.3,224,587,160,640,160C693.3,160,747,224,800,224C853.3,224,907,160,960,122.7C1013.3,85,1067,75,1120,85.3C1173.3,96,1227,128,1280,128C1333.3,128,1387,96,1413,80L1440,64L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"
-        ></path>
-      </svg>
-      <div
-        className={cn(
-          "text-white flex flex-col items-center justify-center w-full",
-          company === "Siemens"
-            ? "bg-siemensPrimary"
-            : company === "Bosch"
-            ? "bg-boschPrimary"
-            : company === "Lg"
-            ? "bg-lgPrimary"
-            : company === "Samsung"
-            ? "bg-samsungPrimary"
-            : "bg-secondary"
-        )}
-      >
-        <div className="grid w-full max-w-6xl px-5 pt-10 pb-20 gap-8 sm:grid-cols-[1fr_0.5fr_0.5fr]">
-          <div className="flex flex-col max-w-[75%] gap-5">
-            <h1 className="text-4xl">Appliance Services UAE</h1>
-            <span className="text-white/90">
-              At Fast Repairs, we specialize in repairing a wide range of home
-              appliances, ensuring they run smoothly and efficiently. Our team
-              of certified technicians is dedicated to providing top-notch
-              service for all your appliance repair needs.
-            </span>
-          </div>
-          <div className="flex flex-col text-white/75 w-full gap-2">
-            <h1 className="text-xl font-black text-white">Quick Links</h1>
-            <Link className="hover:text-white" href="/">
-              Home
-            </Link>
-            <Link className="hover:text-white" href="/about">
-              About us
-            </Link>
-            <Link className="hover:text-white" href="/services">
-              Services
-            </Link>
-            <Link className="hover:text-white" href="/contact">
-              Contact
-            </Link>
-          </div>
-          <div className="flex flex-col text-white/75 w-full gap-2">
-            <h1 className="text-xl font-black text-white">Hire Us</h1>
-            <span className="text-white/90">
-              You can hire us using call or whatsapp. We are available 24/7 to
-              help you.
-            </span>
-            <button
-              onClick={() => {
-                window.location.href = `tel:${phoneNumber}`;
-              }}
-              className={cn(
-                "mt-2 text-start hover:underline",
-                company === "Lg"
-                  ? "text-white font-bold"
-                  : company === "Samsung"
-                  ? "text-white font-bold"
-                  : company === "Bosch"
-                  ? "text-white font-bold"
-                  : company === "Siemens"
-                  ? "text-white font-bold"
-                  : "text-primary/80"
-              )}
-            >
-              Call us now
-            </button>
-            <button
-              onClick={() => {
-                window.location.href = `https://wa.me/${phoneNumber}`;
-              }}
-              className={cn(
-                "mt-2 text-start hover:underline",
-                company === "Lg"
-                  ? "text-white font-bold"
-                  : company === "Samsung"
-                  ? "text-white font-bold"
-                  : company === "Bosch"
-                  ? "text-white font-bold"
-                  : company === "Siemens"
-                  ? "text-white font-bold"
-                  : "text-primary/80"
-              )}
-            >
-              Talk on whatsapp
-            </button>
-          </div>
+    <footer className="relative w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Decorative Top Wave */}
+
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+          {/* Company Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-1"
+          >
+            {/* Brand Logo */}
+            {company !== "Appliance Services UAE" ? (
+              <div className="mb-4">
+                <Image
+                  src={
+                    company === "Siemens" ? "/siemens-white.svg" :
+                      company === "Bosch" ? "/bosch.svg" :
+                        company === "Lg" ? "/lg.svg" :
+                          company === "Samsung" ? "/samsung.svg" :
+                            ""
+                  }
+                  alt={company}
+                  width={150}
+                  height={60}
+                  className="h-12 lg:h-16 w-auto mb-4"
+                />
+              </div>
+            ) : (
+              <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                Appliance Services UAE
+              </h3>
+            )}
+
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Your trusted partner for professional appliance repair services across the UAE.
+              Expert technicians, quality service, and customer satisfaction guaranteed.
+            </p>
+
+            {/* All Brand Logos */}
+
+
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 text-gray-300">
+                <MapPin className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm">Serving All Emirates, UAE</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-300">
+                <Clock className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm">Available 24/7</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Quick Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/#about", label: "About Us" },
+                { href: "/#services", label: "Services" },
+                { href: "/#contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm flex items-center gap-2 group"
+                  >
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-white transition-all duration-200" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Services */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h4 className="text-lg font-bold mb-4">Our Services</h4>
+            <ul className="space-y-3">
+              {[
+                "Washing Machine Repair",
+                "Refrigerator Repair",
+                "Dishwasher Repair",
+                "Oven & Stove Repair",
+                "Dryer Repair",
+              ].map((service) => (
+                <li key={service}>
+                  <span className="text-gray-300 text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {service}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <h4 className="text-lg font-bold mb-4">Get In Touch</h4>
+            <div className="space-y-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                className={cn(
+                  "w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200",
+                  "hover:shadow-lg",
+                  company === "Siemens" ? "bg-siemensPrimary hover:bg-siemensPrimary/90" :
+                    company === "Bosch" ? "bg-boschPrimary hover:bg-boschPrimary/90" :
+                      company === "Lg" ? "bg-lgPrimary hover:bg-lgPrimary/90" :
+                        company === "Samsung" ? "bg-samsungPrimary hover:bg-samsungPrimary/90" :
+                          "bg-primary hover:bg-primary/90"
+                )}
+              >
+                <Phone className="w-5 h-5" />
+                <span className="font-semibold">{phoneNumber}</span>
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                className={cn(
+                  "w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:shadow-lg",
+                  company === "Siemens" ? "bg-siemensPrimary hover:bg-siemensPrimary/90" :
+                    company === "Bosch" ? "bg-boschPrimary hover:bg-boschPrimary/90" :
+                      company === "Lg" ? "bg-lgPrimary hover:bg-lgPrimary/90" :
+                        company === "Samsung" ? "bg-samsungPrimary hover:bg-samsungPrimary/90" :
+                          "bg-green-600 hover:bg-green-700"
+                )}
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span className="font-semibold">WhatsApp Chat</span>
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
-        <div className="border-t border-white/10 py-5 w-full text-center px-5 flex items-center justify-center">
-          &copy; 2024 Appliance Services UAE. All rights reserved.
+
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700 pt-8 mt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Appliance Services UAE. All rights reserved.</p>
+            <div className="flex gap-6">
+              <Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/" className="hover:text-white transition-colors">Terms of Service</Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -6,47 +6,73 @@ import HeaderDropdown from "./HeaderDropdown";
 import { phoneNumber } from "@/lib/phone";
 import { cn } from "@/lib/utils";
 import ServiceCenterDropdown from "./ServiceCenterDropdown";
+import { Phone, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Header() {
   return (
-    <header className="flex flex-col items-center justify-center bg-white max-w-screen overflow-hidden fixed w-full z-50">
-      <div className="flex flex-col w-full max-w-7xl px-5 md:pb-5">
-        <div className="flex justify-between items-center py-5 md:py-0 md:items-end">
-          <Link href="/" className="flex text-lg lg:text-2xl items-center">
-            Appliance Services UAE
-          </Link>
-          <div className="flex md:hidden">
-            <HeaderDropdown />
+    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/95 border-b border-gray-100 shadow-sm">
+      {/* Top Contact Bar */}
+      <div className="hidden lg:block bg-gradient-to-r from-secondary via-secondary/95 to-primary text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-2 text-sm">
+            <div className="flex items-center gap-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+              >
+                <Phone size={16} />
+                <span className="font-semibold">{phoneNumber}</span>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+              >
+                <MessageCircle size={16} />
+                <span className="font-semibold">WhatsApp Chat</span>
+              </motion.button>
+            </div>
+            <div className="text-xs opacity-90">
+              Available 24/7 for Emergency Repairs
+            </div>
           </div>
-          <div className={cn("hidden md:flex gap-5 uppercase")}>
+        </div>
+      </div>
+
+      {/* Main Navigation */}
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex-shrink-0"
+          >
+            <Link href="/" className="flex items-center">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Appliance Services UAE
+              </span>
+            </Link>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             <Navlink href="/" title="Home" />
             <Navlink href="/#about" title="About" />
             <ServiceCenterDropdown />
             <Navlink href="/#services" title="Services" />
             <Navlink href="/#contact" title="Contact" />
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden">
+            <HeaderDropdown />
+          </div>
         </div>
-      </div>
-      <div className="py-1.5 bg-secondary max-w-screen overflow-hidden flex w-full text-xs sm:text-sm items-center justify-center text-white">
-        <div className="flex w-full max-w-7xl px-5">
-          <button
-            onClick={() => {
-              window.location.href = `tel:${phoneNumber}`;
-            }}
-            className="pr-5 border-r border-white"
-          >
-            Call us: <span className="font-black">{phoneNumber}</span>
-          </button>
-          <button
-            onClick={() => {
-              window.location.href = `https://wa.me/${phoneNumber}`;
-            }}
-            className="pl-5"
-          >
-            Talk with us on <span className="font-black">whatsapp</span>!
-          </button>
-        </div>
-      </div>
+      </nav>
     </header>
   );
 }

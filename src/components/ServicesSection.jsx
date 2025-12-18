@@ -7,42 +7,95 @@ import PrimaryButton from "./buttons/PrimaryButton";
 import CallAndWhatsappButton from "./buttons/CallAndWhatsappButton";
 import { cn } from "@/lib/utils";
 import { phoneNumber } from "@/lib/phone";
+import { X, ArrowRight, Clock, Shield, Wrench } from "lucide-react";
 
 export function ServicesSection({ company = "Appliance Services UAE" }) {
   const cards = [
     {
       description: "Washing Machine Repair",
-      title: "We provide 1",
-      src: "/washing.jpeg",
-      ctaText: "Hire Us",
+      title: "Washing Machine",
+      src: "/washing-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: ["Leak repairs", "Spin issues", "Not starting", "Drain problems"],
       content: () => {
         return (
           <div className="flex flex-col gap-4">
-            <p>
-              Common problems with washing machines include leaks, the machine
-              not starting, or the machine not spinning. We provide a same-day
-              service, so you can get your washing machine back up and running
-              in no time.
+            <p className="text-gray-700 leading-relaxed">
+              Our expert technicians specialize in diagnosing and fixing all washing machine issues.
+              From water leaks and drainage problems to motor failures and control board issues,
+              we provide comprehensive repair services. We use genuine parts and offer same-day
+              service to get your washing machine back to optimal performance quickly.
             </p>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Same-Day Service</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>90-Day Warranty</span>
+              </div>
+            </div>
           </div>
         );
       },
     },
     {
       description: "Dryer Repair",
-      title: "We provide 2",
-      src: "/dryer.jpeg",
-      ctaText: "Hire Us",
+      title: "Dryer",
+      src: "/dryer-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: ["Not heating", "Not spinning", "Timer issues", "Vent cleaning"],
       content: () => {
         return (
           <div className="flex flex-col gap-4">
-            <p>
-              Common problems with dryers include the dryer not spinning, or the
-              dryer not starting. We provide a same-day service, so you can get
-              your dryer back up and running in no time.
+            <p className="text-gray-700 leading-relaxed">
+              Professional dryer repair services for all makes and models. We handle heating element
+              replacements, belt repairs, motor issues, and vent cleaning. Our technicians ensure
+              your dryer operates safely and efficiently, reducing energy costs and extending its lifespan.
             </p>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Fast Response</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Quality Parts</span>
+              </div>
+            </div>
           </div>
         );
       },
@@ -52,91 +105,197 @@ export function ServicesSection({ company = "Appliance Services UAE" }) {
         company === "Lg" || company === "Samsung"
           ? "Television Repair"
           : "Stove / Cooker Repair",
-      title: "We provide 3",
+      title: company === "Lg" || company === "Samsung" ? "Television" : "Stove & Cooker",
       src:
-        company === "Lg" || company === "Samsung" ? "/tv.jpeg" : "/stove.jpeg",
-      ctaText: "Hire Us",
+        company === "Lg" || company === "Samsung" ? "/tv-new.png" : "/oven-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: company === "Lg" || company === "Samsung"
+        ? ["Screen issues", "Power problems", "Audio fixes", "Smart features"]
+        : ["Burner repairs", "Oven heating", "Ignition issues", "Control panel"],
       content: () => {
         return (
           <div className="flex flex-col gap-4">
             {company === "Lg" || company === "Samsung" ? (
-              <p>
-                Problems with televisions include the television not turning on,
-                the television not displaying an image, or the television not
-                connecting to the internet. We provide a same-day service, so
-                you can get your television back up and running in no time.
+              <p className="text-gray-700 leading-relaxed">
+                Expert television repair services for all brands and screen types. We diagnose and
+                fix display issues, power problems, audio malfunctions, and smart TV connectivity.
+                Our certified technicians use advanced diagnostic tools to identify problems quickly
+                and restore your TV to perfect working condition.
               </p>
             ) : (
-              <p>
-                Common issues with stoves include the stove not heating, the
-                stove not turning on, or the stove not cooking evenly. We
-                provide a same-day service, so you can get your stove back up
-                and running in no time.
+              <p className="text-gray-700 leading-relaxed">
+                Comprehensive stove and cooker repair services. We fix burner issues, oven heating
+                problems, ignition failures, and control panel malfunctions. Whether it's a gas or
+                electric stove, our technicians have the expertise to get your cooking appliances
+                working perfectly again.
               </p>
             )}
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Expert Diagnosis</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Guaranteed Work</span>
+              </div>
+            </div>
           </div>
         );
       },
     },
     {
       description: "Dishwasher Repair",
-      title: "We provide 4",
-      src: "/dishwasher.jpeg",
-      ctaText: "Hire Us",
+      title: "Dishwasher",
+      src: "/dishwasher-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: ["Drain issues", "Cleaning problems", "Leak repairs", "Control panel"],
       content: () => {
         return (
           <div className="flex flex-col gap-4">
-            <p>
-              Common problems with dishwashers include the dishwasher not
-              draining, the dishwasher not cleaning dishes properly, or the
-              dishwasher not starting. We provide a same-day service, so you can
-              get your dishwasher back up and running in no time.
+            <p className="text-gray-700 leading-relaxed">
+              Professional dishwasher repair services to keep your dishes sparkling clean. We fix
+              drainage problems, cleaning issues, water leaks, and control panel malfunctions. Our
+              technicians ensure your dishwasher runs efficiently, saving water and energy while
+              delivering spotless results.
             </p>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Quick Fix</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Reliable Service</span>
+              </div>
+            </div>
           </div>
         );
       },
     },
     {
-      description: "Refridgerator Repair",
-      title: "We provide 5",
-      src: "/fridge.jpeg",
-      ctaText: "Hire Us",
+      description: "Refrigerator Repair",
+      title: "Refrigerator",
+      src: "/fridge-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: ["Cooling issues", "Noise problems", "Water dispenser", "Ice maker"],
       content: () => {
         return (
-          <div className="flex flex-col gap-4 overflow-auto">
-            <p>
-              Issues with refrigerators include the refrigerator not cooling,
-              the refrigerator making strange noises, or the refrigerator not
-              dispensing water. We provide a same-day service, so you can get
-              your refrigerator back up and running in no time.
+          <div className="flex flex-col gap-4">
+            <p className="text-gray-700 leading-relaxed">
+              Expert refrigerator repair to keep your food fresh and safe. We fix cooling problems,
+              unusual noises, water dispenser issues, and ice maker malfunctions. Our technicians
+              diagnose compressor, thermostat, and seal issues to restore optimal cooling performance
+              and energy efficiency.
             </p>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Emergency Service</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Parts Guarantee</span>
+              </div>
+            </div>
           </div>
         );
       },
     },
     {
       description: "Gas Oven Repair",
-      title: "We provide 6",
-      src: "/oven.jpeg",
-      ctaText: "Hire Us",
+      title: "Gas Oven",
+      src: "/oven-new.png",
+      ctaText: "Get Service",
       ctaLink: `tel:${phoneNumber}`,
+      icon: Wrench,
+      features: ["Heating issues", "Ignition problems", "Temperature control", "Gas safety"],
       content: () => {
         return (
-          <div className="flex flex-col gap-4 overflow-auto">
-            <p>
-              Issues with gas ovens include the oven not heating, the oven not
-              turning on, or the oven not cooking evenly. We provide a same-day
-              service, so you can get your gas oven back up and running in no
-              time.
+          <div className="flex flex-col gap-4">
+            <p className="text-gray-700 leading-relaxed">
+              Safe and reliable gas oven repair services. We fix heating problems, ignition issues,
+              temperature control malfunctions, and ensure proper gas safety. Our certified technicians
+              perform thorough safety checks and repairs to keep your oven operating safely and efficiently.
             </p>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Clock className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Safety First</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Shield className={cn(
+                  "w-4 h-4",
+                  company === "Siemens" ? "text-siemensPrimary" :
+                    company === "Bosch" ? "text-boschPrimary" :
+                      company === "Samsung" ? "text-samsungPrimary" :
+                        company === "Lg" ? "text-lgPrimary" :
+                          "text-primary"
+                )} />
+                <span>Certified Techs</span>
+              </div>
+            </div>
           </div>
         );
       },
     },
   ];
+
   const [active, setActive] = useState(null);
   const id = useId();
   const ref = useRef(null);
@@ -144,7 +303,7 @@ export function ServicesSection({ company = "Appliance Services UAE" }) {
   useEffect(() => {
     function onKeyDown(event) {
       if (event.key === "Escape") {
-        setActive(false);
+        setActive(null);
       }
     }
 
@@ -168,91 +327,51 @@ export function ServicesSection({ company = "Appliance Services UAE" }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 h-full w-full z-10"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm h-full w-full z-50"
+            onClick={() => setActive(null)}
           />
         )}
       </AnimatePresence>
+
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
-            <motion.button
-              key={`button-${active.title}-${id}`}
-              layout
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-                transition: {
-                  duration: 0.05,
-                },
-              }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
-              onClick={() => setActive(null)}
-            >
-              <CloseIcon />
-            </motion.button>
+          <div className="fixed inset-0 grid place-items-center z-[100] p-4">
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="w-full max-w-2xl max-h-[90vh] flex flex-col bg-white rounded-2xl shadow-2xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
+              <motion.button
+                onClick={() => setActive(null)}
+                className="absolute top-4 right-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
+              >
+                <X className="w-5 h-5 text-gray-700" />
+              </motion.button>
+
+              <motion.div layoutId={`image-${active.title}-${id}`} className="relative h-64 sm:h-80">
                 <Image
                   quality={100}
                   width={1000}
                   height={1000}
                   src={active.src}
                   alt={active.title}
-                  className="w-full h-[30rem] sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+                  className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-3xl font-bold text-white mb-2">{active.description}</h3>
+                </div>
               </motion.div>
 
-              <div>
-                <div className="flex justify-between items-start p-4">
-                  <div className="">
-                    <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="font-medium text-base"
-                    >
-                      We provide
-                      {/* {active.title} */}
-                    </motion.h3>
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-lg font-bold"
-                    >
-                      {active.description}
-                    </motion.p>
-                  </div>
-
-                  <motion.a
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    href={active.ctaLink}
-                    target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
-                  >
-                    {active.ctaText}
-                  </motion.a>
+              <div className="flex-1 overflow-y-auto p-6">
+                <div className="mb-6">
+                  {typeof active.content === "function" ? active.content() : active.content}
                 </div>
-                <div className="py-4 relative px-4">
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-xs md:text-sm lg:text-base h-40 pb-10 flex flex-col items-start gap-4 overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
-                  >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
-                  </motion.div>
+
+                <div className="border-t pt-6">
                   <CallAndWhatsappButton company={company} />
                 </div>
               </div>
@@ -260,89 +379,82 @@ export function ServicesSection({ company = "Appliance Services UAE" }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-start gap-4">
-        {cards.map((card, index) => (
-          <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={card.title}
-            onClick={() => setActive(card)}
-            className={cn(
-              "p-4 flex flex-col rounded-xl cursor-pointer",
-              company === "Siemens"
-                ? "bg-siemensBlob hover:bg-siemensPrimary/15"
-                : company === "Bosch"
-                ? "bg-boschBlob hover:bg-boschPrimary/15"
-                : company === "Samsung"
-                ? "bg-samsungBlob hover:bg-samsungPrimary/15"
-                : company === "Lg"
-                ? "bg-lgBlob/75 hover:bg-lgBlob"
-                : "bg-blob hover:bg-primary/15"
-            )}
-          >
-            <div className="flex gap-4 flex-col  w-full">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {cards.map((card, index) => (
+            <motion.div
+              key={card.title}
+              layoutId={`card-${card.title}-${id}`}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => setActive(card)}
+              className={cn(
+                "group relative overflow-hidden rounded-3xl cursor-pointer bg-white shadow-lg border border-gray-100",
+                "hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ring-1",
+                company === "Siemens" ? "ring-gray-100 hover:ring-siemensPrimary/50" :
+                  company === "Bosch" ? "ring-gray-100 hover:ring-boschPrimary/50" :
+                    company === "Samsung" ? "ring-gray-100 hover:ring-samsungPrimary/50" :
+                      company === "Lg" ? "ring-gray-100 hover:ring-lgPrimary/50" :
+                        "ring-gray-100 hover:ring-primary/50"
+              )}
+            >
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   quality={100}
                   width={1000}
                   height={1000}
                   src={card.src}
                   alt={card.title}
-                  className="h-[30rem] w-full rounded-lg object-cover object-top"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </motion.div>
-              <div className="flex justify-center items-center flex-col">
-                <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
-                  className="font-medium text-center md:text-left text-base"
-                >
-                  {/* {card.title} */}
-                  We provide
-                </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-lg font-bold mb-5 text-center md:text-left"
-                >
-                  {card.description}
-                </motion.p>
-                <PrimaryButton company={company}>Hire Us</PrimaryButton>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-2">{card.description}</h3>
+                  <div className="flex items-center gap-2 text-white/90 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                    <span>View Service Details</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                </div>
+
+                <div className={cn(
+                  "absolute top-4 right-4 p-3 rounded-2xl backdrop-blur-md shadow-lg",
+                  company === "Siemens" ? "bg-siemensPrimary/90 text-white" :
+                    company === "Bosch" ? "bg-boschPrimary/90 text-white" :
+                      company === "Samsung" ? "bg-samsungPrimary/90 text-white" :
+                        company === "Lg" ? "bg-lgPrimary/90 text-white" :
+                          "bg-primary/90 text-white"
+                )}>
+                  <card.icon className="w-6 h-6" />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </ul>
+
+              <div className="p-6 bg-white">
+                <div className="flex flex-wrap gap-2">
+                  {card.features.slice(0, 3).map((feature, idx) => (
+                    <span
+                      key={idx}
+                      className={cn(
+                        "text-xs px-3 py-1.5 rounded-full font-semibold tracking-wide uppercase",
+                        company === "Siemens" ? "bg-siemensBlob text-siemensPrimary" :
+                          company === "Bosch" ? "bg-boschBlob text-boschPrimary" :
+                            company === "Samsung" ? "bg-samsungBlob text-samsungPrimary" :
+                              company === "Lg" ? "bg-lgBlob text-lgPrimary" :
+                                "bg-blob text-primary"
+                      )}
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
-
-export const CloseIcon = () => {
-  return (
-    <motion.svg
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.05,
-        },
-      }}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4 text-black"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
-  );
-};

@@ -4,44 +4,75 @@ import Link from "next/link";
 import Navlink from "./Navlink";
 import HeaderDropdown from "./HeaderDropdown";
 import Image from "next/image";
+import { Phone, MessageCircle } from "lucide-react";
+import { phoneNumber } from "@/lib/phone";
+import { motion } from "framer-motion";
 
 export default function BoschHeader() {
   return (
-    <header className="flex flex-col items-center justify-center bg-white text-black max-w-screen overflow-hidden fixed w-full z-50">
-      <div className="flex flex-col w-full max-w-7xl px-5 md:pb-5">
-        <div className="flex justify-between items-center py-5 md:py-0 md:items-end">
-          <Link href="/" className="flex mb-1 items-center">
-            <Image
-              quality={100}
-              src="/bosch.svg"
-              width={120}
-              height={80}
-              alt="Bosch"
-            />
-          </Link>
-          <div className="flex md:hidden">
-            <HeaderDropdown />
-          </div>
-          <div className="hidden md:flex gap-5 uppercase">
-            <Navlink company="Bosch" href="/companies/bosch" title="Home" />
-            <Navlink
-              company="Bosch"
-              href="/companies/bosch#about"
-              title="About"
-            />
-            <Navlink
-              company="Bosch"
-              href="/companies/bosch#services"
-              title="Services"
-            />
-            <Navlink
-              company="Bosch"
-              href="/companies/bosch#contact"
-              title="Contact"
-            />
+    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-white/95 border-b border-gray-100 shadow-sm">
+      {/* Top Contact Bar */}
+      <div className="hidden lg:block bg-gradient-to-r from-boschPrimary via-red-600 to-boschPrimary text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-2 text-sm">
+            <div className="flex items-center gap-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+              >
+                <Phone size={16} />
+                <span className="font-semibold">{phoneNumber}</span>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+              >
+                <MessageCircle size={16} />
+                <span className="font-semibold">WhatsApp Chat</span>
+              </motion.button>
+            </div>
+            <div className="text-xs opacity-90">
+              Available 24/7 for Emergency Repairs
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Main Navigation */}
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex-shrink-0"
+          >
+            <Link href="/companies/bosch" className="flex items-center">
+              <Image
+                quality={100}
+                src="/bosch.svg"
+                width={120}
+                height={60}
+                alt="Bosch"
+                className="h-12 lg:h-16 w-auto"
+              />
+            </Link>
+          </motion.div>
+
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <Navlink company="Bosch" href="/companies/bosch" title="Home" />
+            <Navlink company="Bosch" href="/companies/bosch#about" title="About" />
+            <Navlink company="Bosch" href="/companies/bosch#services" title="Services" />
+            <Navlink company="Bosch" href="/companies/bosch#contact" title="Contact" />
+          </div>
+
+          <div className="lg:hidden">
+            <HeaderDropdown />
+          </div>
+        </div>
+      </nav>
     </header>
   );
 }
