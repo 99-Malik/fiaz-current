@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import ServiceCenterDropdown from "./ServiceCenterDropdown";
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
 export default function Header() {
   return (
@@ -20,7 +21,10 @@ export default function Header() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                onClick={() => {
+                  trackPhoneCall();
+                  window.location.href = `tel:${phoneNumber}`;
+                }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >
                 <Phone size={16} />
@@ -29,7 +33,10 @@ export default function Header() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                onClick={() => {
+                  trackWhatsAppClick();
+                  window.location.href = `https://wa.me/${phoneNumber}`;
+                }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >
                 <MessageCircle size={16} />

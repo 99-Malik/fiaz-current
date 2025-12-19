@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 import { phoneNumber } from "@/lib/phone";
 import { motion } from "framer-motion";
+import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
 export default function Footer({ company = "Repair Home UAE" }) {
   const primaryColor = company === "Siemens" ? "siemensPrimary" :
@@ -137,7 +138,10 @@ export default function Footer({ company = "Repair Home UAE" }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                onClick={() => {
+                  trackPhoneCall();
+                  window.location.href = `tel:${phoneNumber}`;
+                }}
                 className={cn(
                   "w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200",
                   "hover:shadow-lg",
@@ -155,7 +159,10 @@ export default function Footer({ company = "Repair Home UAE" }) {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                onClick={() => {
+                  trackWhatsAppClick();
+                  window.location.href = `https://wa.me/${phoneNumber}`;
+                }}
                 className={cn(
                   "w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:shadow-lg",
                   company === "Siemens" ? "bg-siemensPrimary hover:bg-siemensPrimary/90" :

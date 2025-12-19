@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
 import { phoneNumber } from "@/lib/phone";
 import { motion } from "framer-motion";
+import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
 export default function BoschHeader() {
   return (
@@ -19,7 +20,10 @@ export default function BoschHeader() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `tel:${phoneNumber}`}
+                onClick={() => {
+                  trackPhoneCall();
+                  window.location.href = `tel:${phoneNumber}`;
+                }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >
                 <Phone size={16} />
@@ -28,7 +32,10 @@ export default function BoschHeader() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = `https://wa.me/${phoneNumber}`}
+                onClick={() => {
+                  trackWhatsAppClick();
+                  window.location.href = `https://wa.me/${phoneNumber}`;
+                }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >
                 <MessageCircle size={16} />

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { phoneNumber } from "@/lib/phone";
 import { Phone, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
 export default function CallAndWhatsappButton({
   banner = false,
@@ -22,6 +23,7 @@ export default function CallAndWhatsappButton({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
+          trackPhoneCall();
           window.location.href = `tel:${phoneNumber}`;
         }}
         className={cn(
@@ -45,6 +47,7 @@ export default function CallAndWhatsappButton({
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
+          trackWhatsAppClick();
           window.location.href = `https://wa.me/${phoneNumber}`;
         }}
         className={cn(
