@@ -5,7 +5,7 @@ import Navlink from "./Navlink";
 import HeaderDropdown from "./HeaderDropdown";
 import Image from "next/image";
 import { Phone, MessageCircle } from "lucide-react";
-import { phoneNumber } from "@/lib/phone";
+import { phoneNumber, getWhatsAppUrl } from "@/lib/phone";
 import { motion } from "framer-motion";
 import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
@@ -34,7 +34,7 @@ export default function SamsungHeader() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   trackWhatsAppClick();
-                  window.location.href = `https://wa.me/${phoneNumber}`;
+                  window.location.href = getWhatsAppUrl();
                 }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Navlink from "./Navlink";
 import HeaderDropdown from "./HeaderDropdown";
-import { phoneNumber } from "@/lib/phone";
+import { phoneNumber, getWhatsAppUrl } from "@/lib/phone";
 import { cn } from "@/lib/utils";
 import ServiceCenterDropdown from "./ServiceCenterDropdown";
 import { Phone, MessageCircle } from "lucide-react";
@@ -35,7 +35,7 @@ export default function Header() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   trackWhatsAppClick();
-                  window.location.href = `https://wa.me/${phoneNumber}`;
+                  window.location.href = getWhatsAppUrl();
                 }}
                 className="flex items-center gap-2 hover:opacity-90 transition-opacity"
               >

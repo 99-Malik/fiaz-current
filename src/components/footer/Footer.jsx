@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
-import { phoneNumber } from "@/lib/phone";
+import { phoneNumber, getWhatsAppUrl } from "@/lib/phone";
 import { motion } from "framer-motion";
 import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
 
@@ -161,7 +161,7 @@ export default function Footer({ company = "Repair Home UAE" }) {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   trackWhatsAppClick();
-                  window.location.href = `https://wa.me/${phoneNumber}`;
+                  window.location.href = getWhatsAppUrl();
                 }}
                 className={cn(
                   "w-full flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:shadow-lg",

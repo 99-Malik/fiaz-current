@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { phoneNumber } from "@/lib/phone";
+import { phoneNumber, getWhatsAppUrl } from "@/lib/phone";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
@@ -27,7 +27,7 @@ export default function FixedCallButtons() {
         <button
           onClick={() => {
             trackWhatsAppClick();
-            window.location.href = `https://wa.me/${phoneNumber}`;
+            window.location.href = getWhatsAppUrl();
           }}
           className="group pointer-events-auto flex items-center justify-center p-0 h-16 w-16 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-xl shadow-green-500/20 transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white"
         >

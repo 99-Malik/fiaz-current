@@ -2,7 +2,7 @@
 
 import { leftToRightVariants } from "@/lib/variants";
 import { motion } from "framer-motion";
-import { phoneNumber } from "@/lib/phone";
+import { phoneNumber, getWhatsAppUrl } from "@/lib/phone";
 import { Phone, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackPhoneCall, trackWhatsAppClick } from "@/lib/gtag";
@@ -48,7 +48,7 @@ export default function CallAndWhatsappButton({
         whileTap={{ scale: 0.95 }}
         onClick={() => {
           trackWhatsAppClick();
-          window.location.href = `https://wa.me/${phoneNumber}`;
+          window.location.href = getWhatsAppUrl();
         }}
         className={cn(
           "flex items-center gap-2 px-6 py-3 sm:px-8 sm:py-4 rounded-xl font-bold text-white transition-all duration-200 shadow-lg hover:shadow-xl",
